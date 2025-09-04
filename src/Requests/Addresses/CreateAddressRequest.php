@@ -3,12 +3,16 @@
 namespace Meruhook\MeruhookSDK\Requests\Addresses;
 
 use Meruhook\MeruhookSDK\DTOs\Address;
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\Traits\Body\HasJsonBody;
 
-class CreateAddressRequest extends Request
+class CreateAddressRequest extends Request implements HasBody
 {
+    use HasJsonBody;
+
     protected Method $method = Method::POST;
 
     public function __construct(

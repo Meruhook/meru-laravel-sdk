@@ -3,12 +3,16 @@
 namespace Meruhook\MeruhookSDK\Requests\Addresses;
 
 use Meruhook\MeruhookSDK\DTOs\Address;
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\Traits\Body\HasJsonBody;
 
-class UpdateAddressRequest extends Request
+class UpdateAddressRequest extends Request implements HasBody
 {
+    use HasJsonBody;
+
     protected Method $method = Method::PATCH;
 
     public function __construct(

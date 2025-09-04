@@ -3,12 +3,16 @@
 namespace Meruhook\MeruhookSDK\Requests\Auth;
 
 use Meruhook\MeruhookSDK\DTOs\ApiToken;
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
+use Saloon\Traits\Body\HasJsonBody;
 
-class CreateApiTokenRequest extends Request
+class CreateApiTokenRequest extends Request implements HasBody
 {
+    use HasJsonBody;
+
     protected Method $method = Method::POST;
 
     public function __construct(
