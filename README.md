@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/meruhook/meruhook-sdk.svg?style=flat-square)](https://packagist.org/packages/meruhook/meruhook-sdk)
 [![Tests](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/run-tests.yml/badge.svg)](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/run-tests.yml)
 [![Code Style](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/fix-php-code-style-issues.yml)
-[![PHPStan](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/phpstan.yml/badge.svg)](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/phpstan.yml)
+[![PHPStan](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/phpstan.yml/badge.svg?branch=main)](https://github.com/Meruhook/meru-laravel-sdk/actions/workflows/phpstan.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/meruhook/meruhook-sdk.svg?style=flat-square)](https://packagist.org/packages/meruhook/meruhook-sdk)
 
 A comprehensive Laravel package providing a type-safe, modern SDK for the Meru email webhook service API using Saloon v3.
