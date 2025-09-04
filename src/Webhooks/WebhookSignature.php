@@ -20,7 +20,7 @@ class WebhookSignature
         $payload = $request->getContent();
         $timestamp = $request->header('X-Meru-Timestamp');
 
-        if (! $timestamp || abs(time() - $timestamp) > $tolerance) {
+        if (! $timestamp || abs(time() - (int) $timestamp) > $tolerance) {
             throw new MeruException('Webhook timestamp is too old');
         }
 

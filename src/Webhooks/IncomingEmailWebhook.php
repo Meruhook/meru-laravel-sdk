@@ -4,7 +4,7 @@ namespace Meruhook\MeruhookSDK\Webhooks;
 
 use Illuminate\Http\Request;
 
-readonly class IncomingEmailWebhook
+class IncomingEmailWebhook
 {
     public function __construct(
         public string $messageId,

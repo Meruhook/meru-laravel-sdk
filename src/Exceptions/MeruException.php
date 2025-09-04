@@ -21,11 +21,11 @@ class MeruException extends Exception
         return $this->response;
     }
 
-    public static function fromResponse(Response $response): static
+    public static function fromResponse(Response $response): self
     {
         $data = $response->json();
         $message = $data['message'] ?? 'An error occurred';
 
-        return new static($message, $response, $response->status());
+        return new self($message, $response, $response->status());
     }
 }

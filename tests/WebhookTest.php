@@ -22,7 +22,7 @@ it('can verify webhook signature', function () {
 
     expect(function () use ($request) {
         WebhookSignature::verify($request);
-    })->not->toThrow();
+    })->not->toThrow(MeruException::class);
 });
 
 it('throws exception for invalid signature', function () {

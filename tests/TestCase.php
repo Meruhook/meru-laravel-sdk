@@ -2,11 +2,14 @@
 
 namespace Meruhook\MeruhookSDK\Tests;
 
+use Illuminate\Foundation\Testing\WithFaker;
 use Meruhook\MeruhookSDK\MeruServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    use WithFaker;
+
     protected function setUp(): void
     {
         parent::setUp();

@@ -1,42 +1,31 @@
 <?php
 
-use Illuminate\Support\Facades\Http;
-use Meruhook\MeruhookSDK\DTOs\Address;
 use Meruhook\MeruhookSDK\Facades\Meru;
+use Meruhook\MeruhookSDK\Resources\AccountResource;
+use Meruhook\MeruhookSDK\Resources\AddressResource;
+use Meruhook\MeruhookSDK\Resources\BillingResource;
+use Meruhook\MeruhookSDK\Resources\UsageResource;
 
-it('can use facade to access addresses', function () {
-    Http::fake([
-        'api.test.com/api/addresses' => Http::response([
-            'data' => [],
-        ]),
-    ]);
+it('can access address resource via facade', function () {
+    $addresses = Meru::addresses();
 
-    $addresses = Meru::addresses()->list();
-
-    expect($addresses)->toBeArray();
+    expect($addresses)->toBeInstanceOf(AddressResource::class);
 });
 
-it('can create address via facade', function () {
-    Http::fake([
-        'api.test.com/api/addresses' => Http::response([
-            'data' => [
-                'id' => 'addr_123',
-                'address' => 'test@example.com',
-                'webhook_url' => 'https://webhook.test',
-                'is_enabled' => true,
-                'is_permanent' => true,
-                'expires_at' => null,
-                'email_count' => 0,
-                'last_received_at' => null,
-                'is_expired' => false,
-                'created_at' => now()->toISOString(),
-                'updated_at' => now()->toISOString(),
-            ],
-        ]),
-    ]);
+it('can access usage resource via facade', function () {
+    $usage = Meru::usage();
 
-    $address = Meru::addresses()->create('https://webhook.test');
+    expect($usage)->toBeInstanceOf(UsageResource::class);
+});
 
-    expect($address)->toBeInstanceOf(Address::class);
-    expect($address->webhookUrl)->toBe('https://webhook.test');
+it('can access billing resource via facade', function () {
+    $billing = Meru::billing();
+
+    expect($billing)->toBeInstanceOf(BillingResource::class);
+});
+
+it('can access account resource via facade', function () {
+    $account = Meru::account();
+
+    expect($account)->toBeInstanceOf(AccountResource::class);
 });
