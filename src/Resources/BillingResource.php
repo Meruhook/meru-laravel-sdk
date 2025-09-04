@@ -19,7 +19,7 @@ class BillingResource
      */
     public function get(): Billing
     {
-        $request = new GetBillingRequest();
+        $request = new GetBillingRequest;
         $response = $this->connector->send($request);
 
         return $request->createDtoFromResponse($response);
@@ -30,7 +30,7 @@ class BillingResource
      */
     public function breakdown(): BillingBreakdown
     {
-        $request = new GetBillingBreakdownRequest();
+        $request = new GetBillingBreakdownRequest;
         $response = $this->connector->send($request);
 
         return $request->createDtoFromResponse($response);

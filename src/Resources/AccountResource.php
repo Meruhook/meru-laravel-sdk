@@ -21,7 +21,7 @@ class AccountResource
      */
     public function user(): User
     {
-        $request = new GetUserRequest();
+        $request = new GetUserRequest;
         $response = $this->connector->send($request);
 
         return $request->createDtoFromResponse($response);
@@ -32,7 +32,7 @@ class AccountResource
      */
     public function overview(): AccountOverview
     {
-        $request = new GetAccountOverviewRequest();
+        $request = new GetAccountOverviewRequest;
         $response = $this->connector->send($request);
 
         return $request->createDtoFromResponse($response);

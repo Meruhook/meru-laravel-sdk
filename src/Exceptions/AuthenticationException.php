@@ -2,6 +2,4 @@
 
 namespace Meruhook\MeruhookSDK\Exceptions;
 
-class AuthenticationException extends MeruException
-{
-}
+class AuthenticationException extends MeruException {}

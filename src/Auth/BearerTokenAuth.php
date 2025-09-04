@@ -13,6 +13,6 @@ class BearerTokenAuth implements Authenticator
 
     public function set(PendingRequest $pendingRequest): void
     {
-        $pendingRequest->headers()->add('Authorization', 'Bearer ' . $this->token);
+        $pendingRequest->headers()->add('Authorization', 'Bearer '.$this->token);
     }
 }

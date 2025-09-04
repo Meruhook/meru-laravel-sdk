@@ -9,7 +9,7 @@ it('can verify webhook signature', function () {
     $secret = 'test-secret';
     $payload = json_encode(['message' => 'test']);
     $timestamp = time();
-    $signature = hash_hmac('sha256', $timestamp . '.' . $payload, $secret);
+    $signature = hash_hmac('sha256', $timestamp.'.'.$payload, $secret);
 
     $request = Request::create('/webhook', 'POST', [], [], [], [
         'CONTENT_TYPE' => 'application/json',
@@ -58,7 +58,7 @@ it('can parse incoming email webhook', function () {
         'timestamp' => '2024-01-01T12:00:00Z',
     ]);
     $timestamp = time();
-    $signature = hash_hmac('sha256', $timestamp . '.' . $payload, $secret);
+    $signature = hash_hmac('sha256', $timestamp.'.'.$payload, $secret);
 
     $request = Request::create('/webhook', 'POST', [], [], [], [
         'CONTENT_TYPE' => 'application/json',

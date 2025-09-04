@@ -8,7 +8,7 @@ class MeruServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/meru.php', 'meru');
+        $this->mergeConfigFrom(__DIR__.'/../config/meru.php', 'meru');
 
         $this->app->singleton(MeruConnector::class, function () {
             return new MeruConnector(
@@ -24,7 +24,7 @@ class MeruServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/meru.php' => config_path('meru.php'),
+                __DIR__.'/../config/meru.php' => config_path('meru.php'),
             ], 'meru-config');
         }
     }

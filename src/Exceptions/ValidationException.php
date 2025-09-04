@@ -2,6 +2,4 @@
 
 namespace Meruhook\MeruhookSDK\Exceptions;
 
-class ValidationException extends MeruException
-{
-}
+class ValidationException extends MeruException {}

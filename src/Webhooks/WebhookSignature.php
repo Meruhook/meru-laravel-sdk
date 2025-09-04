@@ -13,20 +13,20 @@ class WebhookSignature
         $secret = config('meru.webhook.secret');
         $tolerance = config('meru.webhook.tolerance', 300);
 
-        if (!$signature || !$secret) {
+        if (! $signature || ! $secret) {
             throw new MeruException('Webhook signature verification failed');
         }
 
         $payload = $request->getContent();
         $timestamp = $request->header('X-Meru-Timestamp');
 
-        if (!$timestamp || abs(time() - $timestamp) > $tolerance) {
+        if (! $timestamp || abs(time() - $timestamp) > $tolerance) {
             throw new MeruException('Webhook timestamp is too old');
         }
 
-        $expectedSignature = hash_hmac('sha256', $timestamp . '.' . $payload, $secret);
+        $expectedSignature = hash_hmac('sha256', $timestamp.'.'.$payload, $secret);
 
-        if (!hash_equals($expectedSignature, $signature)) {
+        if (! hash_equals($expectedSignature, $signature)) {
             throw new MeruException('Webhook signature verification failed');
         }
     }
