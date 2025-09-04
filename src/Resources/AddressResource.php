@@ -23,7 +23,7 @@ class AddressResource
      */
     public function list(): array
     {
-        $request = new ListAddressesRequest();
+        $request = new ListAddressesRequest;
         $response = $this->connector->send($request);
 
         return $request->createDtoFromResponse($response);

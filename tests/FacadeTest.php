@@ -7,8 +7,8 @@ use Meruhook\MeruhookSDK\Facades\Meru;
 it('can use facade to access addresses', function () {
     Http::fake([
         'api.test.com/api/addresses' => Http::response([
-            'data' => []
-        ])
+            'data' => [],
+        ]),
     ]);
 
     $addresses = Meru::addresses()->list();
@@ -31,8 +31,8 @@ it('can create address via facade', function () {
                 'is_expired' => false,
                 'created_at' => now()->toISOString(),
                 'updated_at' => now()->toISOString(),
-            ]
-        ])
+            ],
+        ]),
     ]);
 
     $address = Meru::addresses()->create('https://webhook.test');

@@ -23,8 +23,8 @@ it('can create an address', function () {
                 'is_expired' => false,
                 'created_at' => now()->toISOString(),
                 'updated_at' => now()->toISOString(),
-            ]
-        ])
+            ],
+        ]),
     ]);
 
     $address = $addresses->create('https://webhook.test');
@@ -66,9 +66,9 @@ it('can list addresses', function () {
                     'is_expired' => false,
                     'created_at' => now()->subDays(7)->toISOString(),
                     'updated_at' => now()->subHours(1)->toISOString(),
-                ]
-            ]
-        ])
+                ],
+            ],
+        ]),
     ]);
 
     $addressList = $addresses->list();

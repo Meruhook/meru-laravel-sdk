@@ -20,7 +20,7 @@ class UsageResource
      */
     public function get(): Usage
     {
-        $request = new GetUsageRequest();
+        $request = new GetUsageRequest;
         $response = $this->connector->send($request);
 
         return $request->createDtoFromResponse($response);

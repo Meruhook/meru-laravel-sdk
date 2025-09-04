@@ -2,6 +2,4 @@
 
 namespace Meruhook\MeruhookSDK\Exceptions;
 
-class RateLimitException extends MeruException
-{
-}
+class RateLimitException extends MeruException {}
