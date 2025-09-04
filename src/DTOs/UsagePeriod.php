@@ -19,9 +19,9 @@ readonly class UsagePeriod
         return new self(
             start: Carbon::parse($data['start']),
             end: Carbon::parse($data['end']),
-            currentDay: $data['current_day'],
-            daysInMonth: $data['days_in_month'],
-            daysRemaining: $data['days_remaining'],
+            currentDay: (int) $data['current_day'],
+            daysInMonth: (int) $data['days_in_month'],
+            daysRemaining: (int) $data['days_remaining'],
         );
     }
 }

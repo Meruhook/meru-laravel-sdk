@@ -25,7 +25,7 @@ class MeruServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/meru.php' => config_path('meru.php'),
-            ], 'config');
+            ], 'meru-config');
         }
     }
 }
