@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [v1.0.0] - 2025-09-04
+
+### Added
 - Initial release of Meru Laravel SDK
 - Complete API coverage for Meru email webhook service
 - Address management (create, list, update, delete, enable/disable)
