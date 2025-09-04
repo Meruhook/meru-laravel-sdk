@@ -26,15 +26,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          coverage: none
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader
-
       - name: Validate version format
         run: |
           if [[ ! "${{ github.event.inputs.version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -48,15 +39,6 @@ jobs:
             echo "Error: Tag v${{ github.event.inputs.version }} already exists"
             exit 1
           fi
-
-      - name: Run tests
-        run: composer test
-
-      - name: Run PHPStan analysis
-        run: composer analyse
-
-      - name: Check code style
-        run: composer format -- --dry-run --diff
 
       - name: Extract release notes from CHANGELOG
         id: changelog
@@ -136,6 +118,6 @@ jobs:
           echo "🏷️  Tag: v${{ github.event.inputs.version }}"
           echo "🔗 Release: https://github.com/${{ github.repository }}/releases/tag/v${{ github.event.inputs.version }}"
           echo ""
-          echo "Next steps:"
-          echo "- Packagist should automatically update within a few minutes"
-          echo "- Verify the release at: https://packagist.org/packages/meruhook/meruhook-sdk"
+          echo "✅ Code quality already verified by PR checks"
+          echo "📦 Packagist should automatically update within a few minutes"
+          echo "🔗 Verify at: https://packagist.org/packages/meruhook/meruhook-sdk"
