@@ -43,11 +43,7 @@ return [
         'times' => env('MERU_RETRY_TIMES', 3),
         'delay' => env('MERU_RETRY_DELAY', 100),
     ],
-    'webhook' => [
-        'signature_header' => 'X-Meru-Signature',
-        'secret' => env('MERU_WEBHOOK_SECRET'),
-        'tolerance' => env('MERU_WEBHOOK_TOLERANCE', 300),
-    ],
+   
     'debug' => env('MERU_DEBUG', false),
 ];
 ```
@@ -58,7 +54,6 @@ Add your Meru API credentials to your `.env` file:
 
 ```env
 MERU_API_TOKEN=your_api_token_here
-MERU_WEBHOOK_SECRET=your_webhook_secret_here
 ```
 
 ## Quick Start
@@ -175,61 +170,6 @@ $account = Meru::account()->overview();
 $token = Meru::account()->createApiToken('My App Token');
 ```
 
-## Webhook Handling
-
-Create a controller to handle incoming email webhooks:
-
-```php
-use Illuminate\Http\Request;
-use Meruhook\MeruhookSDK\Webhooks\IncomingEmailWebhook;
-use Meruhook\MeruhookSDK\Exceptions\MeruException;
-
-class WebhookController extends Controller
-{
-    public function handleIncomingEmail(Request $request)
-    {
-        try {
-            $email = IncomingEmailWebhook::fromRequest($request);
-            
-            // Process the email
-            $this->processIncomingEmail($email);
-            
-            return response()->json(['status' => 'success']);
-        } catch (MeruException $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
-    }
-    
-    private function processIncomingEmail(IncomingEmailWebhook $email): void
-    {
-        logger('Received email', [
-            'message_id' => $email->messageId,
-            'from' => $email->from,
-            'subject' => $email->subject,
-            'size' => $email->size,
-        ]);
-        
-        // Your business logic here
-    }
-}
-```
-
-### Webhook Signature Verification
-
-The SDK automatically verifies webhook signatures when using `IncomingEmailWebhook::fromRequest()`. The verification process:
-
-1. Checks for the presence of `X-Meru-Signature` and `X-Meru-Timestamp` headers
-2. Validates that the timestamp is within the configured tolerance (default: 300 seconds)
-3. Computes HMAC-SHA256 of `timestamp.payload` using your webhook secret
-4. Compares the computed signature with the provided signature
-
-Make sure to set your webhook secret in the configuration:
-
-```php
-// In your .env file
-MERU_WEBHOOK_SECRET=your_webhook_secret_here
-MERU_WEBHOOK_TOLERANCE=300  // Optional: timestamp tolerance in seconds
-```
 
 ## Data Transfer Objects (DTOs)
 

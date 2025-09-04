@@ -18,11 +18,5 @@ return [
         'delay' => env('MERU_RETRY_DELAY', 100), // milliseconds
     ],
 
-    'webhook' => [
-        'signature_header' => 'X-Meru-Signature',
-        'secret' => env('MERU_WEBHOOK_SECRET'),
-        'tolerance' => env('MERU_WEBHOOK_TOLERANCE', 300), // seconds
-    ],
-
     'debug' => env('MERU_DEBUG', false),
 ];
