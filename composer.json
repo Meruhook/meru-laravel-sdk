@@ -1,0 +1,60 @@
+{
+    "name": "meruhook/meruhook-sdk",
+    "description": "Laravel SDK for Meru Email Webhook Service",
+    "type": "library",
+    "keywords": ["laravel", "meru", "email", "webhook", "sdk"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zachary Oakes",
+            "email": "zachary.oakes@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "saloonphp/saloon": "^3.0",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/http": "^10.0|^11.0|^12.0",
+        "illuminate/contracts": "^10.0|^11.0|^12.0",
+        "nesbot/carbon": "^2.0|^3.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "phpunit/phpunit": "^10.0|^11.0",
+        "phpstan/phpstan": "^1.0",
+        "laravel/pint": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Meruhook\\MeruhookSDK\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Meruhook\\MeruhookSDK\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Meruhook\\MeruhookSDK\\MeruServiceProvider"
+            ],
+            "aliases": {
+                "Meru": "Meruhook\\MeruhookSDK\\Facades\\Meru"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

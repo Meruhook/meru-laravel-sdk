@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__laravel-boost__list-routes",
+      "mcp__laravel-boost__get-config"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "laravel-boost",
+    "herd"
+  ]
+}
