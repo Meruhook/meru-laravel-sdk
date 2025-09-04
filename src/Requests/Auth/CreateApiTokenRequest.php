@@ -12,7 +12,7 @@ use Saloon\Traits\Body\HasJsonBody;
 class CreateApiTokenRequest extends Request implements HasBody
 {
     use HasJsonBody;
-    
+
     protected Method $method = Method::POST;
 
     public function __construct(

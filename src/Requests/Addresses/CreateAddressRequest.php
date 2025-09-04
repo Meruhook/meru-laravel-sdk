@@ -12,7 +12,7 @@ use Saloon\Traits\Body\HasJsonBody;
 class CreateAddressRequest extends Request implements HasBody
 {
     use HasJsonBody;
-    
+
     protected Method $method = Method::POST;
 
     public function __construct(
@@ -32,7 +32,6 @@ class CreateAddressRequest extends Request implements HasBody
             'is_permanent' => $this->isPermanent,
         ];
     }
-
 
     public function createDtoFromResponse(Response $response): Address
     {

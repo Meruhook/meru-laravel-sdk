@@ -12,7 +12,7 @@ use Saloon\Traits\Body\HasJsonBody;
 class UpdateAddressRequest extends Request implements HasBody
 {
     use HasJsonBody;
-    
+
     protected Method $method = Method::PATCH;
 
     public function __construct(
