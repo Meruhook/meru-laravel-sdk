@@ -43,6 +43,9 @@
         "format": "vendor/bin/pint"
     },
     "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
         "sort-packages": true
     },
     "extra": {
