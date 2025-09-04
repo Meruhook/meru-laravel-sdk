@@ -303,11 +303,29 @@ try {
 }
 ```
 
-## Testing
+## Development
+
+### Testing
 
 ```bash
 composer test
 ```
+
+### Code Quality
+
+Run PHPStan analysis:
+```bash
+composer analyse
+```
+
+Format code with Laravel Pint:
+```bash
+composer format
+```
+
+### Releasing
+
+This package uses automated releases via GitHub Actions. 
 
 ## Changelog
 
