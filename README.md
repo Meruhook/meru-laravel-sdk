@@ -2,7 +2,8 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/meruhook/meruhook-sdk.svg?style=flat-square)](https://packagist.org/packages/meruhook/meruhook-sdk)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/meruhook/meruhook-sdk/run-tests?label=tests)](https://github.com/meruhook/meruhook-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/meruhook/meruhook-sdk/Check%20&%20fix%20styling?label=code%20style)](https://github.com/meruhook/meruhook-sdk/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/meruhook/meruhook-sdk/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/meruhook/meruhook-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/meruhook/meruhook-sdk/PHPStan?label=phpstan)](https://github.com/meruhook/meruhook-sdk/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/meruhook/meruhook-sdk.svg?style=flat-square)](https://packagist.org/packages/meruhook/meruhook-sdk)
 
 A comprehensive Laravel package providing a type-safe, modern SDK for the Meru email webhook service API using Saloon v3.
@@ -13,7 +14,7 @@ The Meru API SDK provides a fluent, Laravel-friendly interface for interacting w
 
 ## Requirements
 
-- PHP 8.1 or higher
+- PHP 8.2 or higher
 - Laravel 10.0, 11.0, or 12.0
 - Saloon v3
 
@@ -215,7 +216,20 @@ class WebhookController extends Controller
 
 ### Webhook Signature Verification
 
-The SDK automatically verifies webhook signatures when using `IncomingEmailWebhook::fromRequest()`. Make sure to set your webhook secret in the configuration.
+The SDK automatically verifies webhook signatures when using `IncomingEmailWebhook::fromRequest()`. The verification process:
+
+1. Checks for the presence of `X-Meru-Signature` and `X-Meru-Timestamp` headers
+2. Validates that the timestamp is within the configured tolerance (default: 300 seconds)
+3. Computes HMAC-SHA256 of `timestamp.payload` using your webhook secret
+4. Compares the computed signature with the provided signature
+
+Make sure to set your webhook secret in the configuration:
+
+```php
+// In your .env file
+MERU_WEBHOOK_SECRET=your_webhook_secret_here
+MERU_WEBHOOK_TOLERANCE=300  // Optional: timestamp tolerance in seconds
+```
 
 ## Data Transfer Objects (DTOs)
 
